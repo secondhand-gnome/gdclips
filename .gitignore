@@ -48,3 +48,5 @@ cmake-build-debug
 
 # JetBrains
 *.iml
+
+build
