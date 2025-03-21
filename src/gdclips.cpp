@@ -4,6 +4,13 @@
 
 using namespace godot;
 
+GDClips::GDClips() {
+
+}
+
+GDClips::~GDClips() {
+}
+
 void GDClips::_bind_methods() {
 
 }
