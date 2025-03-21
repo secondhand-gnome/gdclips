@@ -1,11 +1,11 @@
 #ifndef GDCLIPS_H
 #define GDCLIPS_H
 
-#include <godot_cpp/classes/sprite2d.hpp>
+#include <godot_cpp/classes/node.hpp>
 
 namespace godot {
-    class GDClips : public Sprite2D {
-        GDCLASS(GDClips, Sprite2D)
+    class GDClips : public Node {
+        GDCLASS(GDClips, Node)
 
     private:
         double xxx;
@@ -15,7 +15,7 @@ namespace godot {
 
     public:
         GDClips();
-        ~GDClips();
+        ~GDClips() override;
 
         void _process(double delta) override;
     };
