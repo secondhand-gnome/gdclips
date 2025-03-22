@@ -25,9 +25,20 @@ void GDClips::_process(double delta) {
 void GDClips::_ready() {
     Node::_ready();
 
-    CLIPSValue *defmoduleList;
-    GetDefmoduleList(env, defmoduleList);
+    CLIPSValue defmoduleList;
+    GetDefmoduleList(env, &defmoduleList);
+
+    Multifield *multifield = defmoduleList.multifieldValue;
+    if (multifield == nullptr) {
+        godot::UtilityFunctions::print("multifield is null");
+    } else {
+        godot::UtilityFunctions::print("multifield is not null");
+
+
+
+        // TODO print multifield
+        // TODO make debug methods for printing Multifield and general CLIPSValue
+    }
 
     godot::UtilityFunctions::print("GDClips ", get_name(), " ready");
-    // godot::UtilityFunctions::print("DefmoduleList: ", defmoduleList);
 }
