@@ -1,8 +1,11 @@
 #ifndef GDCLIPS_H
 #define GDCLIPS_H
 
-#include <clips.h>
 #include <godot_cpp/classes/node.hpp>
+
+extern "C" {
+#include <clips.h>
+}
 
 namespace godot {
     class GDClips : public Node {

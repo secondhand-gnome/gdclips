@@ -1,15 +1,18 @@
 #include "gdclips.h"
 #include <godot_cpp/variant/utility_functions.hpp>
+
+extern "C" {
 #include <clips.h>
+}
 
 using namespace godot;
 
 GDClips::GDClips() {
-    // env = CreateEnvironment();
+    env = CreateEnvironment();
 }
 
 GDClips::~GDClips() {
-    // DestroyEnvironment(env);
+    DestroyEnvironment(env);
 }
 
 void GDClips::_bind_methods() {
@@ -22,9 +25,9 @@ void GDClips::_process(double delta) {
 void GDClips::_ready() {
     Node::_ready();
 
-    // CLIPSValue *defmoduleList;
-    // GetDefmoduleList(env, defmoduleList);
+    CLIPSValue *defmoduleList;
+    GetDefmoduleList(env, defmoduleList);
 
     godot::UtilityFunctions::print("GDClips ", get_name(), " ready");
-    // godot::UtilityFunctions::print("DefmoduleList: %s", defmoduleList);
+    // godot::UtilityFunctions::print("DefmoduleList: ", defmoduleList);
 }
