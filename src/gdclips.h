@@ -1,7 +1,7 @@
 #ifndef GDCLIPS_H
 #define GDCLIPS_H
 
-#include <envrnmnt.h>
+#include <clips.h>
 #include <godot_cpp/classes/node.hpp>
 
 namespace godot {
@@ -23,6 +23,8 @@ namespace godot {
         ~GDClips() override;
 
         void _process(double delta) override;
+
+        void _ready() override;
     };
 }
 
