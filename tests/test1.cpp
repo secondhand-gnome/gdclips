@@ -1,6 +1,9 @@
 #include "gtest/gtest.h"
+#include "../src/gdclips.h"
 
-TEST(Test1, BasicAssertions) {
+
+TEST(GDClips, CreateNode) {
+    godot::GDClips node;
     EXPECT_TRUE(true);
 }
 
