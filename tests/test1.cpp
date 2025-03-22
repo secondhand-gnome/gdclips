@@ -7,6 +7,11 @@ TEST(GDClips, CreateNode) {
     EXPECT_TRUE(true);
 }
 
+TEST(GDClips, clear_environment) {
+    godot::GDClips node;
+    node.clear_environment();
+}
+
 int main(int nArgs, char** vArgs) {
     ::testing::InitGoogleTest(&nArgs, vArgs);
     return RUN_ALL_TESTS();

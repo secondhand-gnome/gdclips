@@ -16,6 +16,7 @@ GDClips::~GDClips() {
 }
 
 void GDClips::_bind_methods() {
+    ClassDB::bind_method(D_METHOD("clear_environment"), &GDClips::clear_environment);
 }
 
 void GDClips::_process(double delta) {
@@ -35,10 +36,13 @@ void GDClips::_ready() {
         godot::UtilityFunctions::print("multifield is not null");
 
 
-
         // TODO print multifield
         // TODO make debug methods for printing Multifield and general CLIPSValue
     }
 
     godot::UtilityFunctions::print("GDClips ", get_name(), " ready");
+}
+
+bool GDClips::clear_environment() {
+    return Clear(env);
 }

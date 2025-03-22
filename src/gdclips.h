@@ -12,9 +12,6 @@ namespace godot {
         GDCLASS(GDClips, Node)
 
     private:
-        double xxx;
-
-    private:
         Environment *env;
 
     protected:
@@ -28,6 +25,8 @@ namespace godot {
         void _process(double delta) override;
 
         void _ready() override;
+
+        bool clear_environment();
     };
 }
 
