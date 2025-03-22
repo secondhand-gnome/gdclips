@@ -17,6 +17,7 @@ GDClips::~GDClips() {
 
 void GDClips::_bind_methods() {
     ClassDB::bind_method(D_METHOD("clear_environment"), &GDClips::clear_environment);
+    ClassDB::bind_method(D_METHOD("load_clips_file", "p_file_name"), &GDClips::load_clips_file);
 }
 
 void GDClips::_process(double delta) {
@@ -45,4 +46,19 @@ void GDClips::_ready() {
 
 bool GDClips::clear_environment() {
     return Clear(env);
+}
+
+bool GDClips::load_clips_file(const godot::String &p_file_name) {
+    const char *file_name_cstr = p_file_name.utf8().get_data();
+    const LoadError err = Load(env, file_name_cstr);
+    switch (err) {
+        case LE_NO_ERROR:
+            return true;
+        case LE_OPEN_FILE_ERROR:
+            godot::UtilityFunctions::print("Error loading clips file: ", file_name_cstr);
+            return false;
+        case LE_PARSING_ERROR:
+            godot::UtilityFunctions::print("Error parsing clips file: ", file_name_cstr);
+            return false;
+    }
 }

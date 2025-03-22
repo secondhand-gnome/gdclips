@@ -27,6 +27,8 @@ namespace godot {
         void _ready() override;
 
         bool clear_environment();
+
+        bool load_clips_file(const godot::String &p_file_name);
     };
 }
 
