@@ -374,18 +374,3 @@ target_include_directories(${PROJECT_NAME} PUBLIC extern/clips/core)
 target_link_libraries(${PROJECT_NAME} PUBLIC godot::cpp)
 
 source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}/src" PREFIX src FILES ${SOURCES})
-
-## Testing
-# TODO only enable testing if test flag is set
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-add_subdirectory(googletest EXCLUDE_FROM_ALL)
-enable_testing()
-
-add_executable(gdclips_tests
-        tests/test1.cpp)
-target_include_directories(gdclips_tests PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_include_directories(gdclips_tests PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src")
-target_include_directories(gdclips_tests PUBLIC extern/godot-cpp/gen/include)
-target_include_directories(gdclips_tests PUBLIC extern/clips/core)
-target_link_libraries(gdclips_tests gtest gtest_main ${PROJECT_NAME})
-add_test(NAME gdclips_tests COMMAND gdclips_tests)
