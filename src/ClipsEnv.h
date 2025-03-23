@@ -3,16 +3,13 @@
 
 #include <godot_cpp/classes/node.hpp>
 
-namespace godot {
-    class ClipsInstance;
-}
-
 extern "C" {
 #include <clips.h>
 }
 
 namespace godot {
     class ClipsFact;
+    class ClipsInstance;
 
     class ClipsEnv : public Node {
         GDCLASS(ClipsEnv, Node)

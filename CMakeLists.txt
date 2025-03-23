@@ -366,8 +366,13 @@ add_library(${PROJECT_NAME} SHARED ${SOURCES} ${CLIPS}
         extern/clips/core/watch.c
 
         src/ClipsFact.h
+        src/ClipsFact.cpp
         src/ClipsEnv.h
+        src/ClipsEnv.cpp
+        src/ClipsInstance.h
         src/ClipsInstance.cpp
+        src/ClipsValue.h
+        src/ClipsValue.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src")
