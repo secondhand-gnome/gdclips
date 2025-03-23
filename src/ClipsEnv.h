@@ -76,6 +76,12 @@ namespace godot {
 
         /// 3.3.7 LoadInstancesFromString
         long clips_load_instances_from_string(const godot::String &p_str);
+
+        /// 3.3.8 RestoreInstances
+        long clips_restore_instances(const godot::String &p_file_name);
+
+        /// 3.3.8 RestoreInstancesFromString
+        long clips_restore_instances_from_string(const godot::String &p_str);
     };
 }
 
