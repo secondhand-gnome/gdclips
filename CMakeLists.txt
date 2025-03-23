@@ -22,8 +22,6 @@ file(GLOB CLIPS
 source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}}/extern/clips/core" FILES ${CLIPS})
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES} ${CLIPS}
-        src/gdclips.h
-
         extern/clips/core/agenda.h
         extern/clips/core/analysis.h
         extern/clips/core/argacces.h
@@ -366,6 +364,9 @@ add_library(${PROJECT_NAME} SHARED ${SOURCES} ${CLIPS}
         extern/clips/core/userfunctions.c
         extern/clips/core/utility.c
         extern/clips/core/watch.c
+
+        src/ClipsFact.h
+        src/gdclips.h
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src")

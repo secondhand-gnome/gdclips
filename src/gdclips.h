@@ -8,6 +8,8 @@ extern "C" {
 }
 
 namespace godot {
+    class ClipsFact;
+
     class GDClips : public Node {
         GDCLASS(GDClips, Node)
 
@@ -42,8 +44,7 @@ namespace godot {
         /// 3.3 Creating and Removing Facts and Instances
 
         /// 3.3.1 AssertString
-        // TODO return a node here
-        void clips_assert_string(const godot::String &p_str);
+        Ref<ClipsFact> clips_assert_string(const godot::String &p_str);
     };
 }
 

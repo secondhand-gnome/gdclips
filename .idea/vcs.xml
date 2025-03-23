@@ -4,6 +4,5 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/extern/clips" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/extern/godot-cpp" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/googletest" vcs="Git" />
   </component>
 </project>

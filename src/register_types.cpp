@@ -1,10 +1,11 @@
 #include "register_types.h"
 
-#include "gdclips.h"
-
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/godot.hpp>
+
+#include "ClipsFact.h"
+#include "gdclips.h"
 
 using namespace godot;
 
@@ -14,6 +15,7 @@ void initialize_clips_module(ModuleInitializationLevel p_level) {
     }
 
     GDREGISTER_RUNTIME_CLASS(GDClips);
+    GDREGISTER_RUNTIME_CLASS(ClipsFact);
 }
 
 void uninitialize_clips_module(ModuleInitializationLevel p_level) {
