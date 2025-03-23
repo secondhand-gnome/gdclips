@@ -6,6 +6,7 @@
 
 #include "ClipsFact.h"
 #include "ClipsEnv.h"
+#include "ClipsInstance.h"
 
 using namespace godot;
 
@@ -16,6 +17,7 @@ void initialize_clips_module(ModuleInitializationLevel p_level) {
 
     GDREGISTER_RUNTIME_CLASS(ClipsEnv);
     GDREGISTER_RUNTIME_CLASS(ClipsFact);
+    GDREGISTER_RUNTIME_CLASS(ClipsInstance);
 }
 
 void uninitialize_clips_module(ModuleInitializationLevel p_level) {

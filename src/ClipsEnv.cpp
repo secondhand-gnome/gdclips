@@ -3,10 +3,7 @@
 
 #include "ClipsFact.h"
 #include "ClipsEnv.h"
-
-extern "C" {
-#include <clips.h>
-}
+#include "ClipsInstance.h"
 
 using namespace godot;
 
@@ -84,21 +81,57 @@ Ref<ClipsFact> ClipsEnv::clips_assert_string(const godot::String &p_str) {
             clips_fact->set_fact(fact);
             break;
         case ASE_NULL_POINTER_ERROR:
-            godot::UtilityFunctions::push_error("[ClipsEnv] The str parameter was NULL.");
+            godot::UtilityFunctions::push_error("[ClipsEnv.clips_assert_string] The str parameter was NULL.");
             break;
         case ASE_PARSING_ERROR:
-            godot::UtilityFunctions::push_error("[ClipsEnv] An error was encountered parsing the str parameter: ",
-                                                p_str);
+            godot::UtilityFunctions::push_error(
+                "[ClipsEnv.clips_assert_string] An error was encountered parsing the str parameter: ",
+                p_str);
             break;
         case ASE_COULD_NOT_ASSERT_ERROR:
             godot::UtilityFunctions::push_error(
-                "[ClipsEnv] The fact could not be asserted (such as when pattern matching of a fact or instance is already occurring): ",
+                "[ClipsEnv.clips_assert_string] The fact could not be asserted (such as when pattern matching of a fact or instance is already occurring): ",
                 p_str);
             break;
         case ASE_RULE_NETWORK_ERROR:
             godot::UtilityFunctions::push_error(
-                "[ClipsEnv] An error occurred while the assertion was being processed in the rule network: ", p_str);
+                "[ClipsEnv.clips_assert_string] An error occurred while the assertion was being processed in the rule network: ",
+                p_str);
             break;
     }
     return clips_fact;
+}
+
+Ref<ClipsInstance> ClipsEnv::clips_make_instance(const godot::String &p_str) {
+    const char *cstr = p_str.utf8().get_data();
+    Instance *instance = MakeInstance(env, cstr);
+
+    MakeInstanceError err = GetMakeInstanceError(env);
+
+    Ref<ClipsInstance> clips_instance;
+    switch (err) {
+        case MIE_NO_ERROR:
+            clips_instance.instantiate();
+            clips_instance->set_instance(instance);
+            break;
+        case MIE_NULL_POINTER_ERROR:
+            godot::UtilityFunctions::push_error("[ClipsEnv.clips_make_instance] The str parameter was NULL.");
+            break;
+        case MIE_PARSING_ERROR:
+            godot::UtilityFunctions::push_error(
+                "[ClipsEnv.clips_make_instance] An error was encountered parsing the str parameter: ",
+                p_str);
+            break;
+        case MIE_COULD_NOT_CREATE_ERROR:
+            godot::UtilityFunctions::push_error(
+                "[ClipsEnv.clips_make_instance] The instance could not be created (such as when pattern matching of a fact or instance is already occurring): ",
+                p_str);
+            break;
+        case MIE_RULE_NETWORK_ERROR:
+            godot::UtilityFunctions::push_error(
+                "[ClipsEnv.clips_make_instance] An error occurred while the instance was being processed in the rule network: ",
+                p_str);
+            break;
+    }
+    return clips_instance;
 }

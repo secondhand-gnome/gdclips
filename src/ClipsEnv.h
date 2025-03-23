@@ -3,6 +3,10 @@
 
 #include <godot_cpp/classes/node.hpp>
 
+namespace godot {
+    class ClipsInstance;
+}
+
 extern "C" {
 #include <clips.h>
 }
@@ -45,6 +49,9 @@ namespace godot {
 
         /// 3.3.1 AssertString
         Ref<ClipsFact> clips_assert_string(const godot::String &p_str);
+
+        /// 3.3.2 MakeInstance
+        Ref<ClipsInstance> clips_make_instance(const godot::String &p_str);
     };
 }
 
