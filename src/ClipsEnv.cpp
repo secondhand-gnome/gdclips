@@ -216,5 +216,5 @@ void ClipsEnv::clips_reset() {
 }
 
 int64_t ClipsEnv::clips_run(int64_t p_limit) {
-    Run(env, p_limit);
+    return Run(env, p_limit);
 }
