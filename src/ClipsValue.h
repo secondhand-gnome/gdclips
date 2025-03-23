@@ -12,10 +12,15 @@ namespace godot {
         GDCLASS(ClipsValue, RefCounted)
 
     private:
-        CLIPSValue *clips_value;
+        CLIPSValue *cv;
 
     protected:
         static void _bind_methods();
+
+    public:
+        void set_cv(CLIPSValue *p_cv);
+
+        CLIPSValue *get_cv() const;
     };
 }
 

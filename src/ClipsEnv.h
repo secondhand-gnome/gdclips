@@ -10,6 +10,7 @@ extern "C" {
 namespace godot {
     class ClipsFact;
     class ClipsInstance;
+    class ClipsValue;
 
     class ClipsEnv : public Node {
         GDCLASS(ClipsEnv, Node)
@@ -109,6 +110,12 @@ namespace godot {
         /// 3.5.2 Unwatch
         // TODO methods for every type of WatchItem
         void clips_unwatch_all();
+
+        /// 4.2 Eval
+        bool clips_eval(const godot::String &p_str, const godot::ClipsValue *p_clips_value);
+
+        /// 4.2 Build
+        bool clips_build(const godot::String &p_str);
     };
 }
 

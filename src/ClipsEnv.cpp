@@ -4,6 +4,7 @@
 #include "ClipsFact.h"
 #include "ClipsEnv.h"
 #include "ClipsInstance.h"
+#include "ClipsValue.h"
 
 using namespace godot;
 
@@ -46,6 +47,9 @@ void ClipsEnv::_bind_methods() {
 
     ClassDB::bind_method(D_METHOD("clips_watch_all"), &ClipsEnv::clips_watch_all);
     ClassDB::bind_method(D_METHOD("clips_unwatch_all"), &ClipsEnv::clips_unwatch_all);
+
+    ClassDB::bind_method(D_METHOD("clips_eval"), &ClipsEnv::clips_eval);
+    ClassDB::bind_method(D_METHOD("clips_build"), &ClipsEnv::clips_build);
 }
 
 void ClipsEnv::_process(double delta) {
@@ -239,4 +243,62 @@ void ClipsEnv::clips_watch_all() {
 
 void ClipsEnv::clips_unwatch_all() {
     Unwatch(env, ALL);
+}
+
+bool ClipsEnv::clips_eval(const godot::String &p_str, const godot::ClipsValue *p_clips_value) {
+    const char *cstr = p_str.utf8().get_data();
+    const EvalError err = Eval(env, cstr, p_clips_value->get_cv());
+
+    bool result;
+    switch (err) {
+        case EE_NO_ERROR:
+            // No error
+            result = true;
+            break;
+        case EE_PARSING_ERROR:
+            godot::UtilityFunctions::push_error(
+                "[ClipsEnv.clips_eval] A syntax error was encountered while parsing: ",
+                p_str);
+            result = false;
+            break;
+        case EE_PROCESSING_ERROR:
+            godot::UtilityFunctions::push_error(
+                "[ClipsEnv.clips_eval] An error occurred while executing the parsed expression: ",
+                p_str);
+            result = false;
+            break;
+    }
+    return result;
+}
+
+bool ClipsEnv::clips_build(const godot::String &p_str) {
+    const char *cstr = p_str.utf8().get_data();
+    const BuildError err = Build(env, cstr);
+
+    bool result;
+    switch (err) {
+        case BE_NO_ERROR:
+            // No error
+            result = true;
+            break;
+        case BE_PARSING_ERROR:
+            godot::UtilityFunctions::push_error(
+                "[ClipsEnv.clips_build] A syntax error was encountered while parsing: ",
+                p_str);
+            result = false;
+            break;
+        case BE_CONSTRUCT_NOT_FOUND_ERROR:
+            godot::UtilityFunctions::push_error(
+                "[ClipsEnv.clips_build] The construct name following the opening left parenthesis was not recognized: ",
+                p_str);
+            result = false;
+            break;
+        case BE_COULD_NOT_BUILD_ERROR:
+            godot::UtilityFunctions::push_error(
+                "[ClipsEnv.clips_build] The construct could not be added (such as when pattern matching is active): ",
+                p_str);
+            result = false;
+            break;
+    }
+    return result;
 }
