@@ -104,6 +104,14 @@ namespace godot {
 
         /// 3.5.1 DribbleOff
         bool clips_dribble_off();
+
+        /// 3.5.2 Watch
+        // TODO methods for every type of WatchItem
+        void clips_watch_all();
+
+        /// 3.5.2 Unwatch
+        // TODO methods for every type of WatchItem
+        void clips_unwatch_all();
     };
 }
 

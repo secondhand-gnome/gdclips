@@ -43,6 +43,9 @@ void ClipsEnv::_bind_methods() {
     ClassDB::bind_method(D_METHOD("clips_run"), &ClipsEnv::clips_run);
     ClassDB::bind_method(D_METHOD("clips_dribble_on", "p_file_name"), &ClipsEnv::clips_dribble_on);
     ClassDB::bind_method(D_METHOD("clips_dribble_off"), &ClipsEnv::clips_dribble_off);
+
+    ClassDB::bind_method(D_METHOD("clips_watch_all"), &ClipsEnv::clips_watch_all);
+    ClassDB::bind_method(D_METHOD("clips_unwatch_all"), &ClipsEnv::clips_unwatch_all);
 }
 
 void ClipsEnv::_process(double delta) {
@@ -228,4 +231,12 @@ bool ClipsEnv::clips_dribble_on(const godot::String &p_file_name) {
 
 bool ClipsEnv::clips_dribble_off() {
     return DribbleOff(env);
+}
+
+void ClipsEnv::clips_watch_all() {
+    Watch(env, ALL);
+}
+
+void ClipsEnv::clips_unwatch_all() {
+    Unwatch(env, ALL);
 }
