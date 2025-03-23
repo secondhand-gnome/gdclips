@@ -61,6 +61,12 @@ namespace godot {
 
         /// 3.3.5 LoadFactsFromString
         long clips_load_facts_from_string(const godot::String &p_str);
+
+        /// 3.3.6 SaveFacts
+        long clips_save_facts(const godot::String &p_file_name, bool p_local_only);
+
+        /// 3.3.6 BinarySaveFacts
+        long clips_binary_save_facts(const godot::String &p_file_name, bool p_local_only);
     };
 }
 
