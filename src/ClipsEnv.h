@@ -82,6 +82,12 @@ namespace godot {
 
         /// 3.3.8 RestoreInstancesFromString
         long clips_restore_instances_from_string(const godot::String &p_str);
+
+        /// 3.3.9 SaveInstances
+        long clips_save_instances(const godot::String &p_file_name, bool p_local_only);
+
+        /// 3.3.9 BinarySaveInstances
+        long clips_binary_save_instances(const godot::String &p_file_name, bool p_local_only);
     };
 }
 

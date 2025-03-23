@@ -35,6 +35,10 @@ void ClipsEnv::_bind_methods() {
     ClassDB::bind_method(D_METHOD("clips_restore_instances", "p_file_name"), &ClipsEnv::clips_restore_instances);
     ClassDB::bind_method(D_METHOD("clips_restore_instances_from_string", "p_str"),
                          &ClipsEnv::clips_restore_instances_from_string);
+    ClassDB::bind_method(D_METHOD("clips_save_instances", "p_file_name", "p_local_only"),
+                         &ClipsEnv::clips_save_instances);
+    ClassDB::bind_method(D_METHOD("clips_binary_save_instances", "p_file_name", "p_local_only"),
+                         &ClipsEnv::clips_binary_save_instances);
 }
 
 void ClipsEnv::_process(double delta) {
@@ -206,4 +210,16 @@ long ClipsEnv::clips_restore_instances_from_string(const godot::String &p_str) {
     const char *cstr = p_str.utf8().get_data();
     const size_t len = p_str.length();
     return RestoreInstancesFromString(env, cstr, len);
+}
+
+long ClipsEnv::clips_save_instances(const godot::String &p_file_name, bool p_local_only) {
+    const char *file_name_cstr = p_file_name.utf8().get_data();
+    const SaveScope save_scope = p_local_only ? LOCAL_SAVE : VISIBLE_SAVE;
+    return SaveInstances(env, file_name_cstr, save_scope);
+}
+
+long ClipsEnv::clips_binary_save_instances(const godot::String &p_file_name, bool p_local_only) {
+    const char *file_name_cstr = p_file_name.utf8().get_data();
+    const SaveScope save_scope = p_local_only ? LOCAL_SAVE : VISIBLE_SAVE;
+    return BinarySaveInstances(env, file_name_cstr, save_scope);
 }
