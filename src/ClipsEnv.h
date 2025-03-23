@@ -1,5 +1,5 @@
-#ifndef GDCLIPS_H
-#define GDCLIPS_H
+#ifndef CLIPSENV_H
+#define CLIPSENV_H
 
 #include <godot_cpp/classes/node.hpp>
 
@@ -10,8 +10,8 @@ extern "C" {
 namespace godot {
     class ClipsFact;
 
-    class GDClips : public Node {
-        GDCLASS(GDClips, Node)
+    class ClipsEnv : public Node {
+        GDCLASS(ClipsEnv, Node)
 
     private:
         Environment *env;
@@ -20,9 +20,9 @@ namespace godot {
         static void _bind_methods();
 
     public:
-        GDClips();
+        ClipsEnv();
 
-        ~GDClips() override;
+        ~ClipsEnv() override;
 
         void _process(double delta) override;
 
@@ -48,4 +48,4 @@ namespace godot {
     };
 }
 
-#endif //GDCLIPS_H
+#endif //CLIPSENV_H

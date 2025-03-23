@@ -5,7 +5,7 @@
 #include <godot_cpp/godot.hpp>
 
 #include "ClipsFact.h"
-#include "gdclips.h"
+#include "ClipsEnv.h"
 
 using namespace godot;
 
@@ -14,7 +14,7 @@ void initialize_clips_module(ModuleInitializationLevel p_level) {
         return;
     }
 
-    GDREGISTER_RUNTIME_CLASS(GDClips);
+    GDREGISTER_RUNTIME_CLASS(ClipsEnv);
     GDREGISTER_RUNTIME_CLASS(ClipsFact);
 }
 
