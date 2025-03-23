@@ -11,8 +11,10 @@ void godot::ClipsFact::_bind_methods() {
 
 void godot::ClipsFact::set_fact(Fact *p_fact) {
     fact = p_fact;
+    RetainFact(fact);
 }
 
 godot::ClipsFact::~ClipsFact() {
     ReleaseFact(fact);
+    Retract(fact);
 }
