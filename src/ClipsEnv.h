@@ -116,6 +116,9 @@ namespace godot {
 
         /// 4.2 Build
         bool clips_build(const godot::String &p_str);
+
+        /// TODO 4.3 FunctionCallBuilder Functions
+        /// TODO 4.4 StringBuilder Functions
     };
 }
 

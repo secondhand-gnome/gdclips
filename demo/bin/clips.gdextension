@@ -1,0 +1,11 @@
+[configuration]
+entry_symbol = "gdclips_init"
+compatibility_minimum = "4.4"
+reloadable = true
+
+[libraries]
+# TODO make cross-platform and split release/debug
+linux.x86_64 = "res://bin/libgdclips.so"
+linux.debug.x86_64 = "res://bin/libgdclips.so"
+# linux.release.x86_64 = "res://bin/libgdclips.so"
+
