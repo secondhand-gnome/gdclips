@@ -39,6 +39,8 @@ void ClipsEnv::_bind_methods() {
                          &ClipsEnv::clips_save_instances);
     ClassDB::bind_method(D_METHOD("clips_binary_save_instances", "p_file_name", "p_local_only"),
                          &ClipsEnv::clips_binary_save_instances);
+    ClassDB::bind_method(D_METHOD("clips_reset"), &ClipsEnv::clips_reset);
+    ClassDB::bind_method(D_METHOD("clips_run"), &ClipsEnv::clips_run);
 }
 
 void ClipsEnv::_process(double delta) {
@@ -222,4 +224,12 @@ long ClipsEnv::clips_binary_save_instances(const godot::String &p_file_name, boo
     const char *file_name_cstr = p_file_name.utf8().get_data();
     const SaveScope save_scope = p_local_only ? LOCAL_SAVE : VISIBLE_SAVE;
     return BinarySaveInstances(env, file_name_cstr, save_scope);
+}
+
+void ClipsEnv::clips_reset() {
+    Reset(env);
+}
+
+int64_t ClipsEnv::clips_run(int64_t p_limit) {
+    Run(env, p_limit);
 }

@@ -88,6 +88,14 @@ namespace godot {
 
         /// 3.3.9 BinarySaveInstances
         long clips_binary_save_instances(const godot::String &p_file_name, bool p_local_only);
+
+        /// 3.4 Executing Rules
+
+        /// 3.4.1 Reset
+        void clips_reset();
+
+        /// 3.4.2 Run
+        int64_t clips_run(int64_t p_limit);
     };
 }
 
