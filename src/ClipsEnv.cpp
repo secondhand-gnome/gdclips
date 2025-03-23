@@ -21,6 +21,9 @@ void ClipsEnv::_bind_methods() {
     ClassDB::bind_method(D_METHOD("clips_bload", "p_file_name"), &ClipsEnv::clips_bload);
     ClassDB::bind_method(D_METHOD("clips_assert_string", "p_str"), &ClipsEnv::clips_assert_string);
     ClassDB::bind_method(D_METHOD("clips_make_instance", "p_str"), &ClipsEnv::clips_make_instance);
+    ClassDB::bind_method(D_METHOD("clips_load_facts", "p_file_name"), &ClipsEnv::clips_load_facts);
+    ClassDB::bind_method(D_METHOD("clips_binary_load_facts", "p_file_name"), &ClipsEnv::clips_binary_load_facts);
+    ClassDB::bind_method(D_METHOD("clips_load_facts_from_string", "p_str"), &ClipsEnv::clips_load_facts_from_string);
 }
 
 void ClipsEnv::_process(double delta) {
@@ -137,4 +140,20 @@ Ref<ClipsInstance> ClipsEnv::clips_make_instance(const godot::String &p_str) {
             break;
     }
     return clips_instance;
+}
+
+long ClipsEnv::clips_load_facts(const godot::String &p_file_name) {
+    const char *file_name_cstr = p_file_name.utf8().get_data();
+    return LoadFacts(env, file_name_cstr);
+}
+
+long ClipsEnv::clips_binary_load_facts(const godot::String &p_file_name) {
+    const char *file_name_cstr = p_file_name.utf8().get_data();
+    return BinaryLoadFacts(env, file_name_cstr);
+}
+
+long ClipsEnv::clips_load_facts_from_string(const godot::String &p_str) {
+    const char *cstr = p_str.utf8().get_data();
+    size_t len = p_str.length();
+    return LoadFactsFromString(env, cstr, len);
 }

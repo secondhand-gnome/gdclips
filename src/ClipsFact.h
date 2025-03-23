@@ -22,6 +22,7 @@ namespace godot {
         /// Must be called after ClipsFact is created with Ref.instantiate()
         void set_fact(Fact *p_fact);
 
+        /// 3.3.3 Retract
         ~ClipsFact() override;
     };
 }

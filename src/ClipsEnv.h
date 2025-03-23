@@ -52,6 +52,15 @@ namespace godot {
 
         /// 3.3.2 MakeInstance
         Ref<ClipsInstance> clips_make_instance(const godot::String &p_str);
+
+        /// 3.3.5 LoadFacts
+        long clips_load_facts(const godot::String &p_file_name);
+
+        /// 3.3.5 BinaryLoadFacts
+        long clips_binary_load_facts(const godot::String &p_file_name);
+
+        /// 3.3.5 LoadFactsFromString
+        long clips_load_facts_from_string(const godot::String &p_str);
     };
 }
 
