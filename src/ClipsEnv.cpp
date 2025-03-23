@@ -16,8 +16,11 @@ ClipsEnv::~ClipsEnv() {
 }
 
 void ClipsEnv::_bind_methods() {
-    ClassDB::bind_method(D_METHOD("clear_environment"), &ClipsEnv::clips_clear);
-    ClassDB::bind_method(D_METHOD("load_clips_file", "p_file_name"), &ClipsEnv::clips_load);
+    ClassDB::bind_method(D_METHOD("clips_clear"), &ClipsEnv::clips_clear);
+    ClassDB::bind_method(D_METHOD("clips_load", "p_file_name"), &ClipsEnv::clips_load);
+    ClassDB::bind_method(D_METHOD("clips_bload", "p_file_name"), &ClipsEnv::clips_bload);
+    ClassDB::bind_method(D_METHOD("clips_assert_string", "p_str"), &ClipsEnv::clips_assert_string);
+    ClassDB::bind_method(D_METHOD("clips_make_instance", "p_str"), &ClipsEnv::clips_make_instance);
 }
 
 void ClipsEnv::_process(double delta) {
