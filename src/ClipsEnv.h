@@ -97,7 +97,13 @@ namespace godot {
         /// 3.4.2 Run
         int64_t clips_run(int64_t p_limit);
 
-        // TODO 3.5 Debugging
+        /// 3.5 Debugging
+
+        /// 3.5.1 DribbleOn
+        bool clips_dribble_on(const godot::String &p_file_name);
+
+        /// 3.5.1 DribbleOff
+        bool clips_dribble_off();
     };
 }
 
