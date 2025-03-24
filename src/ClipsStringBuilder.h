@@ -23,6 +23,8 @@ namespace godot {
 
         void set_sb(StringBuilder *p_sb);
 
+        godot::String sb_get_contents() const;
+
         /// 4.4.2 SBAddChar
         void sb_add_char(const godot::String &p_char);
 

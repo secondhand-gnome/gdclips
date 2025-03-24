@@ -16,7 +16,9 @@ func _ready() -> void:
 	# Should emit a warning about multiple chars
 	sb.sb_add_char("AA")
 	
-	# Should be OK
 	sb.sb_add_char("B")
+	sb.sb_add_char("C")
+	print(sb.sb_get_contents()) # prints "BC"
 	
 	sb.sb_reset()
+	print(sb.sb_get_contents()) # prints ""

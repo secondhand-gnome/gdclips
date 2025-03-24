@@ -3,6 +3,7 @@
 #include "ClipsStringBuilder.h"
 
 void godot::ClipsStringBuilder::_bind_methods() {
+    ClassDB::bind_method(D_METHOD("sb_get_contents"), &ClipsStringBuilder::sb_get_contents);
     ClassDB::bind_method(D_METHOD("sb_add_char", "p_char"), &ClipsStringBuilder::sb_add_char);
     ClassDB::bind_method(D_METHOD("sb_reset"), &ClipsStringBuilder::sb_reset);
 }
@@ -17,6 +18,19 @@ godot::ClipsStringBuilder::~ClipsStringBuilder() {
 
 void godot::ClipsStringBuilder::set_sb(StringBuilder *p_sb) {
     sb = p_sb;
+}
+
+godot::String godot::ClipsStringBuilder::sb_get_contents() const {
+    const char *contents;
+    if (sb == nullptr) {
+        godot::UtilityFunctions::push_warning("[ClipsStringBuilder.sb_get_contents] sb is null");
+        contents = "";
+    } else {
+        contents = sb->contents;
+    }
+
+    godot::String result = String::utf8(contents);
+    return result;
 }
 
 void godot::ClipsStringBuilder::sb_add_char(const godot::String &p_char) {
