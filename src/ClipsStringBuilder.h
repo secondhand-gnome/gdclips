@@ -20,6 +20,8 @@ namespace godot {
 
     public:
         ~ClipsStringBuilder() override;
+
+        void set_sb(StringBuilder *p_sb);
     };
 }
 

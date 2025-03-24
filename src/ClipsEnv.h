@@ -10,8 +10,8 @@ extern "C" {
 namespace godot {
     class ClipsFact;
     class ClipsFunctionCallBuilder;
-    // class ClipsStringBuilder;
     class ClipsInstance;
+    class ClipsStringBuilder;
     class ClipsValue;
 
     class ClipsEnv : public Node {
@@ -122,7 +122,10 @@ namespace godot {
         /// 4.3 FunctionCallBuilder
         godot::Ref<godot::ClipsFunctionCallBuilder> clips_create_function_call_builder(size_t p_capacity);
 
-        /// TODO 4.4 StringBuilder Functions
+        /// 4.4 StringBuilder Functions
+
+        /// 4.4.1 CreateStringBuilder
+        godot::Ref<godot::ClipsStringBuilder> clips_create_string_builder(size_t p_capacity);
     };
 }
 

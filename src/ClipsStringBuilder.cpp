@@ -12,3 +12,7 @@ godot::ClipsStringBuilder::~ClipsStringBuilder() {
     }
     SBDispose(sb);
 }
+
+void godot::ClipsStringBuilder::set_sb(StringBuilder *p_sb) {
+    sb = p_sb;
+}

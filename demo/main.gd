@@ -10,3 +10,5 @@ func _ready() -> void:
 	fcb.fcb_reset()
 	fcb.fcb_append(cv)
 	fcb.fcb_call("println", cv) # TODO no function has name "println"
+	
+	var sb = clips_env.clips_create_string_builder(1) as ClipsStringBuilder

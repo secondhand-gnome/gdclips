@@ -3,6 +3,8 @@
 
 #include "ClipsEnv.h"
 
+#include <ClipsStringBuilder.h>
+
 #include "ClipsFact.h"
 #include "ClipsFunctionCallBuilder.h"
 #include "ClipsInstance.h"
@@ -55,6 +57,7 @@ void ClipsEnv::_bind_methods() {
 
     ClassDB::bind_method(D_METHOD("clips_create_function_call_builder", "p_capacity"),
                          &ClipsEnv::clips_create_function_call_builder);
+    ClassDB::bind_method(D_METHOD("clips_create_string_builder", "p_capacity"), &ClipsEnv::clips_create_string_builder);
 }
 
 void ClipsEnv::_process(double delta) {
@@ -313,4 +316,11 @@ godot::Ref<godot::ClipsFunctionCallBuilder> ClipsEnv::clips_create_function_call
     FunctionCallBuilder *fcb = CreateFunctionCallBuilder(env, p_capacity);
     clips_function_call_builder->set_fcb(fcb);
     return clips_function_call_builder;
+}
+
+godot::Ref<godot::ClipsStringBuilder> ClipsEnv::clips_create_string_builder(size_t p_capacity) {
+    godot::Ref<godot::ClipsStringBuilder> clips_string_builder = memnew(godot::ClipsStringBuilder);
+    StringBuilder *sb = CreateStringBuilder(env, p_capacity);
+    clips_string_builder->set_sb(sb);
+    return clips_string_builder;
 }
