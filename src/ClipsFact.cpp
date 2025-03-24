@@ -1,12 +1,12 @@
-//
-// Created by austin on 3/22/25.
-//
-
 #include <godot_cpp/core/class_db.hpp>
 
 #include "ClipsFact.h"
 
 void godot::ClipsFact::_bind_methods() {
+}
+
+Fact * godot::ClipsFact::get_fact() {
+    return fact;
 }
 
 void godot::ClipsFact::set_fact(Fact *p_fact) {

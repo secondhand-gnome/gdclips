@@ -1,3 +1,5 @@
+#include <godot_cpp/core/class_db.hpp>
+
 #include "ClipsValue.h"
 
 void godot::ClipsValue::_bind_methods() {

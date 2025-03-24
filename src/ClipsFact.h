@@ -20,6 +20,7 @@ namespace godot {
         static void _bind_methods();
 
     public:
+        Fact *get_fact();
         void set_fact(Fact *p_fact);
 
         /// 3.3.3 Retract

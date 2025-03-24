@@ -4,15 +4,15 @@
 
 #include <godot_cpp/classes/ref_counted.hpp>
 
-namespace godot {
-    class ClipsValue;
-}
-
 extern "C" {
 #include <clips.h>
 }
 
 namespace godot {
+    class ClipsFact;
+    class ClipsInstance;
+    class ClipsValue;
+
     class ClipsFunctionCallBuilder : public RefCounted {
         GDCLASS(ClipsFunctionCallBuilder, RefCounted)
 
@@ -49,8 +49,11 @@ namespace godot {
         // TODO append CLIPSInteger
         // TODO append CLIPSFloat
         // TODO append CLIPSLexeme
-        // TODO append Fact
-        // TODO append Instance
+
+        void fcb_append_fact(const godot::Ref<godot::ClipsFact> &p_value);
+
+        void fcb_append_instance(const godot::Ref<godot::ClipsInstance> &p_value);
+
         // TODO append Multifield
         // TODO append CLIPSExternalAddress
     };

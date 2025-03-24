@@ -19,6 +19,7 @@ namespace godot {
         static void _bind_methods();
 
     public:
+        Instance *get_instance() const;
         void set_instance(Instance *p_instance);
 
         /// 3.3.4 UnmakeInstance

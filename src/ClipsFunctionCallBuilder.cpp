@@ -1,6 +1,10 @@
+#include <godot_cpp/core/class_db.hpp>
+
 #include "ClipsFunctionCallBuilder.h"
 
-#include <ClipsValue.h>
+#include "ClipsFact.h"
+#include "ClipsInstance.h"
+#include "ClipsValue.h"
 
 void godot::ClipsFunctionCallBuilder::_bind_methods() {
     ClassDB::bind_method(D_METHOD("fcb_call", "p_function_name", "p_clips_value"), &ClipsFunctionCallBuilder::fcb_call);
@@ -12,6 +16,8 @@ void godot::ClipsFunctionCallBuilder::_bind_methods() {
     ClassDB::bind_method(D_METHOD("fcb_append_string", "p_value"), &ClipsFunctionCallBuilder::fcb_append_string);
     ClassDB::bind_method(D_METHOD("fcb_append_instance_name", "p_value"),
                          &ClipsFunctionCallBuilder::fcb_append_instance_name);
+    ClassDB::bind_method(D_METHOD("fcb_append_fact", "p_value"), &ClipsFunctionCallBuilder::fcb_append_fact);
+    ClassDB::bind_method(D_METHOD("fcb_append_instance", "p_value"), &ClipsFunctionCallBuilder::fcb_append_instance);
 }
 
 godot::ClipsFunctionCallBuilder::~ClipsFunctionCallBuilder() {
@@ -139,4 +145,30 @@ void godot::ClipsFunctionCallBuilder::fcb_append_instance_name(const godot::Stri
     }
     const char *cstr = p_value.utf8().get_data();
     FCBAppendInstanceName(fcb, cstr);
+}
+
+void godot::ClipsFunctionCallBuilder::fcb_append_fact(const godot::Ref<godot::ClipsFact> &p_value) {
+    if (fcb == nullptr) {
+        godot::UtilityFunctions::push_warning("[ClipsFunctionCallBuilder.fcb_append_fact] fcb is null");
+        return;
+    }
+    Fact *fact = p_value->get_fact();
+    if (fact == nullptr) {
+        godot::UtilityFunctions::push_warning("[ClipsFunctionCallBuilder.fcb_append_fact] fact is null");
+        return;
+    }
+    FCBAppendFact(fcb, fact);
+}
+
+void godot::ClipsFunctionCallBuilder::fcb_append_instance(const godot::Ref<godot::ClipsInstance> &p_value) {
+    if (fcb == nullptr) {
+        godot::UtilityFunctions::push_warning("[ClipsFunctionCallBuilder.fcb_append_instance] fcb is null");
+        return;
+    }
+    Instance *instance = p_value->get_instance();
+    if (instance == nullptr) {
+        godot::UtilityFunctions::push_warning("[ClipsFunctionCallBuilder.fcb_append_instance] instance is null");
+        return;
+    }
+    FCBAppendInstance(fcb, instance);
 }

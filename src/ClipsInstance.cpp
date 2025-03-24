@@ -1,6 +1,12 @@
+#include <godot_cpp/core/class_db.hpp>
+
 #include "ClipsInstance.h"
 
 void godot::ClipsInstance::_bind_methods() {
+}
+
+Instance *godot::ClipsInstance::get_instance() const {
+    return instance;
 }
 
 void godot::ClipsInstance::set_instance(Instance *p_instance) {
