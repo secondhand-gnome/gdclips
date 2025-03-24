@@ -22,6 +22,12 @@ namespace godot {
         ~ClipsStringBuilder() override;
 
         void set_sb(StringBuilder *p_sb);
+
+        /// 4.4.2 SBAddChar
+        void sb_add_char(const godot::String &p_char);
+
+        /// 4.4.3 SBAppend
+        // TODO
     };
 }
 
