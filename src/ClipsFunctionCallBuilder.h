@@ -53,7 +53,6 @@ namespace godot {
         // TODO append Instance
         // TODO append Multifield
         // TODO append CLIPSExternalAddress
-        // TODO pop argument
     };
 }
 
