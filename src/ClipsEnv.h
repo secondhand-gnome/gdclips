@@ -3,16 +3,14 @@
 
 #include <godot_cpp/classes/node.hpp>
 
-namespace godot {
-    class ClipsFunctionCallBuilder;
-}
-
 extern "C" {
 #include <clips.h>
 }
 
 namespace godot {
     class ClipsFact;
+    class ClipsFunctionCallBuilder;
+    // class ClipsStringBuilder;
     class ClipsInstance;
     class ClipsValue;
 

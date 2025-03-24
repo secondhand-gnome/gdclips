@@ -375,6 +375,8 @@ add_library(${PROJECT_NAME} SHARED ${SOURCES} ${CLIPS}
         src/ClipsValue.cpp
         src/ClipsFunctionCallBuilder.h
         src/ClipsFunctionCallBuilder.cpp
+        src/ClipsStringBuilder.h
+        src/ClipsStringBuilder.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src")
