@@ -6,6 +6,12 @@ void godot::ClipsFunctionCallBuilder::_bind_methods() {
     ClassDB::bind_method(D_METHOD("fcb_call", "p_function_name", "p_clips_value"), &ClipsFunctionCallBuilder::fcb_call);
     ClassDB::bind_method(D_METHOD("fcb_reset"), &ClipsFunctionCallBuilder::fcb_reset);
     ClassDB::bind_method(D_METHOD("fcb_append", "p_clips_value"), &ClipsFunctionCallBuilder::fcb_append);
+    ClassDB::bind_method(D_METHOD("fcb_append_integer", "p_value"), &ClipsFunctionCallBuilder::fcb_append_integer);
+    ClassDB::bind_method(D_METHOD("fcb_append_float", "p_value"), &ClipsFunctionCallBuilder::fcb_append_float);
+    ClassDB::bind_method(D_METHOD("fcb_append_symbol", "p_value"), &ClipsFunctionCallBuilder::fcb_append_symbol);
+    ClassDB::bind_method(D_METHOD("fcb_append_string", "p_value"), &ClipsFunctionCallBuilder::fcb_append_string);
+    ClassDB::bind_method(D_METHOD("fcb_append_instance_name", "p_value"),
+                         &ClipsFunctionCallBuilder::fcb_append_instance_name);
 }
 
 godot::ClipsFunctionCallBuilder::~ClipsFunctionCallBuilder() {
@@ -21,7 +27,7 @@ void godot::ClipsFunctionCallBuilder::set_fcb(FunctionCallBuilder *p_fcb) {
 }
 
 bool godot::ClipsFunctionCallBuilder::fcb_call(const godot::String &p_function_name,
-                                               const godot::Ref<godot::ClipsValue>& p_clips_value) {
+                                               const godot::Ref<godot::ClipsValue> &p_clips_value) {
     const char *fn_cstr = p_function_name.utf8().get_data();
 
     if (fcb == nullptr) {
@@ -73,21 +79,64 @@ bool godot::ClipsFunctionCallBuilder::fcb_call(const godot::String &p_function_n
 
 void godot::ClipsFunctionCallBuilder::fcb_reset() {
     if (fcb == nullptr) {
-        godot::UtilityFunctions::push_warning("[ClipsFunctionCallBuilder.clips_reset] fcb is null");
+        godot::UtilityFunctions::push_warning("[ClipsFunctionCallBuilder.fcb_reset] fcb is null");
         return;
     }
     FCBReset(fcb);
 }
 
-void godot::ClipsFunctionCallBuilder::fcb_append(godot::Ref<godot::ClipsValue> p_clips_value) {
+void godot::ClipsFunctionCallBuilder::fcb_append(const godot::Ref<godot::ClipsValue> &p_clips_value) {
     if (fcb == nullptr) {
-        godot::UtilityFunctions::push_warning("[ClipsFunctionCallBuilder.clips_append] fcb is null");
+        godot::UtilityFunctions::push_warning("[ClipsFunctionCallBuilder.fcb_append] fcb is null");
         return;
     }
     CLIPSValue *cv = p_clips_value->get_cv();
     if (cv == nullptr) {
-        godot::UtilityFunctions::push_warning("[ClipsFunctionCallBuilder.clips_append] cv is null");
+        godot::UtilityFunctions::push_warning("[ClipsFunctionCallBuilder.fcb_append] cv is null");
         return;
     }
     FCBAppend(fcb, cv);
+}
+
+void godot::ClipsFunctionCallBuilder::fcb_append_integer(int64_t p_value) {
+    if (fcb == nullptr) {
+        godot::UtilityFunctions::push_warning("[ClipsFunctionCallBuilder.fcb_append_integer] fcb is null");
+        return;
+    }
+    FCBAppendInteger(fcb, p_value);
+}
+
+void godot::ClipsFunctionCallBuilder::fcb_append_float(double p_value) {
+    if (fcb == nullptr) {
+        godot::UtilityFunctions::push_warning("[ClipsFunctionCallBuilder.fcb_append_double] fcb is null");
+        return;
+    }
+    FCBAppendFloat(fcb, p_value);
+}
+
+void godot::ClipsFunctionCallBuilder::fcb_append_symbol(const godot::String &p_value) {
+    if (fcb == nullptr) {
+        godot::UtilityFunctions::push_warning("[ClipsFunctionCallBuilder.fcb_append_symbol] fcb is null");
+        return;
+    }
+    const char *cstr = p_value.utf8().get_data();
+    FCBAppendSymbol(fcb, cstr);
+}
+
+void godot::ClipsFunctionCallBuilder::fcb_append_string(const godot::String &p_value) {
+    if (fcb == nullptr) {
+        godot::UtilityFunctions::push_warning("[ClipsFunctionCallBuilder.fcb_append_string] fcb is null");
+        return;
+    }
+    const char *cstr = p_value.utf8().get_data();
+    FCBAppendString(fcb, cstr);
+}
+
+void godot::ClipsFunctionCallBuilder::fcb_append_instance_name(const godot::String &p_value) {
+    if (fcb == nullptr) {
+        godot::UtilityFunctions::push_warning("[ClipsFunctionCallBuilder.fcb_append_instance_name] fcb is null");
+        return;
+    }
+    const char *cstr = p_value.utf8().get_data();
+    FCBAppendInstanceName(fcb, cstr);
 }
