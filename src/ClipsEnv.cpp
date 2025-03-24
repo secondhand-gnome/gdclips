@@ -91,10 +91,9 @@ Ref<ClipsFact> ClipsEnv::clips_assert_string(const godot::String &p_str) {
 
     AssertStringError err = GetAssertStringError(env);
 
-    Ref<ClipsFact> clips_fact;
+    godot::Ref<godot::ClipsFact> clips_fact = memnew(godot::ClipsFact);
     switch (err) {
         case ASE_NO_ERROR:
-            clips_fact.instantiate();
             clips_fact->set_fact(fact);
             break;
         case ASE_NULL_POINTER_ERROR:

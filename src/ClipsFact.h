@@ -13,7 +13,8 @@ namespace godot {
         GDCLASS(ClipsFact, RefCounted)
 
     private:
-        Fact *fact;
+        /// Pointer to a Fact in memory managed by CLIPS
+        Fact *fact = nullptr;
 
     protected:
         static void _bind_methods();

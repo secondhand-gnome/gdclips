@@ -15,6 +15,11 @@ void godot::ClipsFact::set_fact(Fact *p_fact) {
 }
 
 godot::ClipsFact::~ClipsFact() {
+    if (fact == nullptr) {
+        godot::UtilityFunctions::push_warning("[ClipsFact.destructor] Fact is null.");
+        return;
+    }
+
     ReleaseFact(fact);
 
     RetractError err = Retract(fact);
