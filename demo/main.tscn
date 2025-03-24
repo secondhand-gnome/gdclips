@@ -1,5 +1,8 @@
-[gd_scene format=3 uid="uid://c5h5e7if45ojh"]
+[gd_scene load_steps=2 format=3 uid="uid://c5h5e7if45ojh"]
+
+[ext_resource type="Script" uid="uid://clvsh7aea50vq" path="res://main.gd" id="1_ig7tw"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_ig7tw")
 
 [node name="ClipsEnv" type="ClipsEnv" parent="."]

@@ -112,7 +112,7 @@ namespace godot {
         void clips_unwatch_all();
 
         /// 4.2 Eval
-        bool clips_eval(const godot::String &p_str, const godot::ClipsValue *p_clips_value);
+        godot::Ref<godot::ClipsValue> clips_eval(const godot::String &p_str);
 
         /// 4.2 Build
         bool clips_build(const godot::String &p_str);

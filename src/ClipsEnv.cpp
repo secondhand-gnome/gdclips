@@ -48,8 +48,8 @@ void ClipsEnv::_bind_methods() {
     ClassDB::bind_method(D_METHOD("clips_watch_all"), &ClipsEnv::clips_watch_all);
     ClassDB::bind_method(D_METHOD("clips_unwatch_all"), &ClipsEnv::clips_unwatch_all);
 
-    ClassDB::bind_method(D_METHOD("clips_eval"), &ClipsEnv::clips_eval);
-    ClassDB::bind_method(D_METHOD("clips_build"), &ClipsEnv::clips_build);
+    ClassDB::bind_method(D_METHOD("clips_eval", "p_str"), &ClipsEnv::clips_eval);
+    ClassDB::bind_method(D_METHOD("clips_build", "p_str"), &ClipsEnv::clips_build);
 }
 
 void ClipsEnv::_process(double delta) {
@@ -245,30 +245,31 @@ void ClipsEnv::clips_unwatch_all() {
     Unwatch(env, ALL);
 }
 
-bool ClipsEnv::clips_eval(const godot::String &p_str, const godot::ClipsValue *p_clips_value) {
+godot::Ref<godot::ClipsValue> ClipsEnv::clips_eval(const godot::String &p_str) {
     const char *cstr = p_str.utf8().get_data();
-    const EvalError err = Eval(env, cstr, p_clips_value->get_cv());
 
-    bool result;
+    godot::Ref<godot::ClipsValue> clips_value = memnew(godot::ClipsValue);
+
+    CLIPSValue cv;
+    const EvalError err = Eval(env, cstr, &cv);
+
     switch (err) {
         case EE_NO_ERROR:
-            // No error
-            result = true;
+            // Copy cv to the Ref to be returned
+            clips_value->set_cv(cv);
             break;
         case EE_PARSING_ERROR:
             godot::UtilityFunctions::push_error(
                 "[ClipsEnv.clips_eval] A syntax error was encountered while parsing: ",
                 p_str);
-            result = false;
             break;
         case EE_PROCESSING_ERROR:
             godot::UtilityFunctions::push_error(
                 "[ClipsEnv.clips_eval] An error occurred while executing the parsed expression: ",
                 p_str);
-            result = false;
             break;
     }
-    return result;
+    return clips_value;
 }
 
 bool ClipsEnv::clips_build(const godot::String &p_str) {
