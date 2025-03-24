@@ -19,7 +19,6 @@ namespace godot {
         static void _bind_methods();
 
     public:
-        /// Must be called after ClipsInstance is created with Ref.instantiate()
         void set_instance(Instance *p_instance);
 
         /// 3.3.4 UnmakeInstance

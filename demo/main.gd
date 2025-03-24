@@ -4,4 +4,9 @@ func _ready() -> void:
 	var clips_env := $ClipsEnv
 	var cv := clips_env.clips_eval("80") as ClipsValue
 	
-	var fact = clips_env.clips_assert_string("(fruit apple")
+	#var fact = clips_env.clips_assert_string("(fruit apple")
+	
+	var fcb = clips_env.clips_create_function_call_builder(1) as ClipsFunctionCallBuilder
+	fcb.fcb_reset()
+	fcb.fcb_append(cv)
+	fcb.fcb_call("println", cv) # TODO no function has name "println"

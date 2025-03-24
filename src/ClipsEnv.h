@@ -3,6 +3,10 @@
 
 #include <godot_cpp/classes/node.hpp>
 
+namespace godot {
+    class ClipsFunctionCallBuilder;
+}
+
 extern "C" {
 #include <clips.h>
 }
@@ -117,7 +121,9 @@ namespace godot {
         /// 4.2 Build
         bool clips_build(const godot::String &p_str);
 
-        /// TODO 4.3 FunctionCallBuilder Functions
+        /// 4.3 FunctionCallBuilder
+        godot::Ref<godot::ClipsFunctionCallBuilder> clips_create_function_call_builder(size_t p_capacity);
+
         /// TODO 4.4 StringBuilder Functions
     };
 }

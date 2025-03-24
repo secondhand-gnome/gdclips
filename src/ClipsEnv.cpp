@@ -3,6 +3,9 @@
 
 #include "ClipsFact.h"
 #include "ClipsEnv.h"
+
+#include <ClipsFunctionCallBuilder.h>
+
 #include "ClipsInstance.h"
 #include "ClipsValue.h"
 
@@ -50,6 +53,9 @@ void ClipsEnv::_bind_methods() {
 
     ClassDB::bind_method(D_METHOD("clips_eval", "p_str"), &ClipsEnv::clips_eval);
     ClassDB::bind_method(D_METHOD("clips_build", "p_str"), &ClipsEnv::clips_build);
+
+    ClassDB::bind_method(D_METHOD("clips_create_function_call_builder", "p_capacity"),
+                         &ClipsEnv::clips_create_function_call_builder);
 }
 
 void ClipsEnv::_process(double delta) {
@@ -301,4 +307,11 @@ bool ClipsEnv::clips_build(const godot::String &p_str) {
             break;
     }
     return result;
+}
+
+godot::Ref<godot::ClipsFunctionCallBuilder> ClipsEnv::clips_create_function_call_builder(const size_t p_capacity) {
+    godot::Ref<godot::ClipsFunctionCallBuilder> clips_function_call_builder = memnew(godot::ClipsFunctionCallBuilder);
+    FunctionCallBuilder *fcb = CreateFunctionCallBuilder(env, p_capacity);
+    clips_function_call_builder->set_fcb(fcb);
+    return clips_function_call_builder;
 }

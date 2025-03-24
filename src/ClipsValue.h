@@ -18,6 +18,8 @@ namespace godot {
         static void _bind_methods();
 
     public:
+        CLIPSValue *get_cv();
+
         void set_cv(CLIPSValue p_cv);
     };
 }

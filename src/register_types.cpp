@@ -1,5 +1,6 @@
 #include "register_types.h"
 
+#include <ClipsFunctionCallBuilder.h>
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
 #include <godot_cpp/godot.hpp>
@@ -18,6 +19,7 @@ void initialize_clips_module(ModuleInitializationLevel p_level) {
 
     GDREGISTER_RUNTIME_CLASS(ClipsEnv);
     GDREGISTER_RUNTIME_CLASS(ClipsFact);
+    GDREGISTER_RUNTIME_CLASS(ClipsFunctionCallBuilder);
     GDREGISTER_RUNTIME_CLASS(ClipsInstance);
     GDREGISTER_RUNTIME_CLASS(ClipsValue);
 }
