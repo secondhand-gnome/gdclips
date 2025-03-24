@@ -16,7 +16,9 @@ func _ready() -> void:
 	sb.sb_append("AA")
 	sb.sb_append("B")
 	sb.sb_append("C")
-	print(sb.sb_get_contents()) # prints "BC"
+	sb.sb_append_int(42)
+	sb.sb_append_float(3.14)
+	print(sb.sb_get_contents()) # prints "AABC432.14"
 	
 	sb.sb_reset()
 	print(sb.sb_get_contents()) # prints ""

@@ -32,10 +32,10 @@ namespace godot {
         void sb_append(const godot::String &p_value);
 
         /// 4.4.3 SBAppendInteger
-        // TODO
+        void sb_append_int(int64_t p_value);
 
         /// 4.4.3 SBAppendFloat
-        // TODO
+        void sb_append_float(double p_value);
 
         /// 4.4.4 SBCopy
         // TODO

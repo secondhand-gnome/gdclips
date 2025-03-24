@@ -5,6 +5,8 @@
 void godot::ClipsStringBuilder::_bind_methods() {
     ClassDB::bind_method(D_METHOD("sb_get_contents"), &ClipsStringBuilder::sb_get_contents);
     ClassDB::bind_method(D_METHOD("sb_append", "p_value"), &ClipsStringBuilder::sb_append);
+    ClassDB::bind_method(D_METHOD("sb_append_int", "p_value"), &ClipsStringBuilder::sb_append_int);
+    ClassDB::bind_method(D_METHOD("sb_append_float", "p_value"), &ClipsStringBuilder::sb_append_float);
     ClassDB::bind_method(D_METHOD("sb_reset"), &ClipsStringBuilder::sb_reset);
 }
 
@@ -40,6 +42,14 @@ void godot::ClipsStringBuilder::sb_append(const godot::String &p_value) {
         return;
     }
     SBAppend(sb, cstr);
+}
+
+void godot::ClipsStringBuilder::sb_append_int(const int64_t p_value) {
+    sb_append(itos(p_value));
+}
+
+void godot::ClipsStringBuilder::sb_append_float(const double p_value) {
+    sb_append(rtos(p_value));
 }
 
 void godot::ClipsStringBuilder::sb_reset() {
