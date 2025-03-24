@@ -25,11 +25,11 @@ namespace godot {
 
         godot::String sb_get_contents() const;
 
-        /// 4.4.2 SBAddChar
-        void sb_add_char(const godot::String &p_char);
+        /// 4.4.2 SBAddChar - Not implemented because Godot has no char type.
+        /// Just use sb_append.
 
         /// 4.4.3 SBAppend
-        // TODO
+        void sb_append(const godot::String &p_value);
 
         /// 4.4.3 SBAppendInteger
         // TODO

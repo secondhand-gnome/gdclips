@@ -13,11 +13,9 @@ func _ready() -> void:
 	
 	var sb = clips_env.clips_create_string_builder(1) as ClipsStringBuilder
 	
-	# Should emit a warning about multiple chars
-	sb.sb_add_char("AA")
-	
-	sb.sb_add_char("B")
-	sb.sb_add_char("C")
+	sb.sb_append("AA")
+	sb.sb_append("B")
+	sb.sb_append("C")
 	print(sb.sb_get_contents()) # prints "BC"
 	
 	sb.sb_reset()
