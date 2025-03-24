@@ -28,6 +28,18 @@ namespace godot {
 
         /// 4.4.3 SBAppend
         // TODO
+
+        /// 4.4.3 SBAppendInteger
+        // TODO
+
+        /// 4.4.3 SBAppendFloat
+        // TODO
+
+        /// 4.4.4 SBCopy
+        // TODO
+
+        /// 4.4.6 SBReset
+        void sb_reset();
     };
 }
 

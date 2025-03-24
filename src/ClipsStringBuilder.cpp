@@ -4,6 +4,7 @@
 
 void godot::ClipsStringBuilder::_bind_methods() {
     ClassDB::bind_method(D_METHOD("sb_add_char", "p_char"), &ClipsStringBuilder::sb_add_char);
+    ClassDB::bind_method(D_METHOD("sb_reset"), &ClipsStringBuilder::sb_reset);
 }
 
 godot::ClipsStringBuilder::~ClipsStringBuilder() {
@@ -30,4 +31,12 @@ void godot::ClipsStringBuilder::sb_add_char(const godot::String &p_char) {
     }
     const char c = p_char.unicode_at(0);
     SBAddChar(sb, c);
+}
+
+void godot::ClipsStringBuilder::sb_reset() {
+    if (sb == nullptr) {
+        godot::UtilityFunctions::push_warning("[ClipsStringBuilder.sb_reset] sb is null");
+        return;
+    }
+    SBReset(sb);
 }

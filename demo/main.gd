@@ -18,3 +18,5 @@ func _ready() -> void:
 	
 	# Should be OK
 	sb.sb_add_char("B")
+	
+	sb.sb_reset()
