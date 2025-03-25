@@ -40,10 +40,13 @@ bool godot::ClipsFunctionCallBuilder::fcb_call(const godot::String &p_function_n
         godot::UtilityFunctions::push_warning("[ClipsFunctionCallBuilder.fcb_call] fcb is null");
         return false;
     }
-    CLIPSValue *cv = p_clips_value->get_cv();
-    if (cv == nullptr) {
-        godot::UtilityFunctions::push_warning("[ClipsFunctionCallBuilder.fcb_call] cv is null");
-        return false;
+
+    CLIPSValue *cv = nullptr;
+    if (p_clips_value != nullptr) {
+        CLIPSValue *cv = p_clips_value->get_cv();
+        if (cv == nullptr) {
+            godot::UtilityFunctions::push_warning("[ClipsFunctionCallBuilder.fcb_call] p_clips_value is not null but cv is null");
+        }
     }
 
     const FunctionCallBuilderError err = FCBCall(fcb, fn_cstr, cv);
