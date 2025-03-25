@@ -37,8 +37,8 @@ namespace godot {
         /// 4.4.3 SBAppendFloat
         void sb_append_float(double p_value);
 
-        /// 4.4.4 SBCopy
-        // TODO
+        /// 4.4.4 SBCopy - Not implemented.
+        /// Just use sb_get_contents()
 
         /// 4.4.6 SBReset
         void sb_reset();
