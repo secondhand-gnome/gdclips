@@ -4,3 +4,7 @@
 [submodule "extern/clips"]
 	path = extern/clips
 	url = git@github.com:noxdafox/clips.git
+[submodule "extern/gut"]
+	path = extern/gut
+	url = git@github.com:bitwes/Gut.git
+	branch = 2bc6617
