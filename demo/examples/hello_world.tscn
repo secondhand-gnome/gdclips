@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://f8oeehrhg6km"]
-
-[ext_resource type="Script" uid="uid://bx2ila1dugu3c" path="res://examples/hello_world.gd" id="1_d420b"]
-
-[node name="HelloWorld" type="Node2D"]
-script = ExtResource("1_d420b")
-
-[node name="ClipsEnv" type="ClipsEnv" parent="."]
