@@ -10,6 +10,11 @@ CLIPS was created by Gary Riley and is available in the public domain under the 
 
 Still heavily under development. Not fully implemented.
 
+The goal is to implement most or all functionality as described in:
+
+1. [CLIPS Basic Programming Guide version 6.4.2](https://www.clipsrules.net/documentation/v642/bpg642.pdf)
+2. [CLIPS Advanced Programming Guide version 6.4.2](https://www.clipsrules.net/documentation/v642/apg642.pdf)
+
 ## Usage
 
 TODO
