@@ -49,4 +49,8 @@ cmake-build-debug
 # JetBrains
 *.iml
 
+# SCons
+*.os
+.sconsign.dblite
+
 build
