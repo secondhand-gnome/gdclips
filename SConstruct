@@ -17,10 +17,10 @@ env.Append(CPPPATH=[
     "extern/clips/core/",
     "src/",
 ])
-sources = Glob(
-    "extern/clips/core/*.c",
-    "src/*.cpp",
-)
+sources = [
+    Glob("extern/clips/core/*.c"),
+    Glob("src/*.cpp"),
+]
 
 if env["platform"] == "macos":
     library = env.SharedLibrary(
