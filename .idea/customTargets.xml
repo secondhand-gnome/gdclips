@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CLionExternalBuildManager">
+    <target id="3c7afce7-9702-40de-8b9f-b78f025525df" name="Build GDExtension" defaultType="TOOL">
+      <configuration id="66da3609-abf2-4717-aaff-892033c5958a" name="Build GDExtension">
+        <build type="TOOL">
+          <tool actionId="Tool_External Tools_Build GDExtension debug" />
+        </build>
+        <clean type="TOOL">
+          <tool actionId="Tool_External Tools_Clean GDExtension" />
+        </clean>
+      </configuration>
+    </target>
+  </component>
+</project>
