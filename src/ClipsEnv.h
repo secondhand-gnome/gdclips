@@ -54,40 +54,40 @@ namespace godot {
         Ref<ClipsInstance> clips_make_instance(const godot::String &p_str);
 
         /// 3.3.5 LoadFacts
-        long clips_load_facts(const godot::String &p_file_name);
+        int64_t clips_load_facts(const godot::String &p_file_name);
 
         /// 3.3.5 BinaryLoadFacts
-        long clips_binary_load_facts(const godot::String &p_file_name);
+        int64_t clips_binary_load_facts(const godot::String &p_file_name);
 
         /// 3.3.5 LoadFactsFromString
-        long clips_load_facts_from_string(const godot::String &p_str);
+        int64_t clips_load_facts_from_string(const godot::String &p_str);
 
         /// 3.3.6 SaveFacts
-        long clips_save_facts(const godot::String &p_file_name, bool p_local_only);
+        int64_t clips_save_facts(const godot::String &p_file_name, bool p_local_only);
 
         /// 3.3.6 BinarySaveFacts
-        long clips_binary_save_facts(const godot::String &p_file_name, bool p_local_only);
+        int64_t clips_binary_save_facts(const godot::String &p_file_name, bool p_local_only);
 
         /// 3.3.7 LoadInstances
-        long clips_load_instances(const godot::String &p_file_name);
+        int64_t clips_load_instances(const godot::String &p_file_name);
 
         /// 3.3.7 BinaryLoadInstances
-        long clips_binary_load_instances(const godot::String &p_file_name);
+        int64_t clips_binary_load_instances(const godot::String &p_file_name);
 
         /// 3.3.7 LoadInstancesFromString
-        long clips_load_instances_from_string(const godot::String &p_str);
+        int64_t clips_load_instances_from_string(const godot::String &p_str);
 
         /// 3.3.8 RestoreInstances
-        long clips_restore_instances(const godot::String &p_file_name);
+        int64_t clips_restore_instances(const godot::String &p_file_name);
 
         /// 3.3.8 RestoreInstancesFromString
-        long clips_restore_instances_from_string(const godot::String &p_str);
+        int64_t clips_restore_instances_from_string(const godot::String &p_str);
 
         /// 3.3.9 SaveInstances
-        long clips_save_instances(const godot::String &p_file_name, bool p_local_only);
+        int64_t clips_save_instances(const godot::String &p_file_name, bool p_local_only);
 
         /// 3.3.9 BinarySaveInstances
-        long clips_binary_save_instances(const godot::String &p_file_name, bool p_local_only);
+        int64_t clips_binary_save_instances(const godot::String &p_file_name, bool p_local_only);
 
         /// 3.4 Executing Rules
 
@@ -120,12 +120,12 @@ namespace godot {
         bool clips_build(const godot::String &p_str);
 
         /// 4.3 FunctionCallBuilder
-        godot::Ref<godot::ClipsFunctionCallBuilder> clips_create_function_call_builder(size_t p_capacity);
+        godot::Ref<godot::ClipsFunctionCallBuilder> clips_create_function_call_builder(int64_t p_capacity);
 
         /// 4.4 StringBuilder Functions
 
         /// 4.4.1 CreateStringBuilder
-        godot::Ref<godot::ClipsStringBuilder> clips_create_string_builder(size_t p_capacity);
+        godot::Ref<godot::ClipsStringBuilder> clips_create_string_builder(int64_t p_capacity);
     };
 }
 

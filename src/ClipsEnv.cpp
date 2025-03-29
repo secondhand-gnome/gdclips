@@ -160,68 +160,68 @@ Ref<ClipsInstance> ClipsEnv::clips_make_instance(const godot::String &p_str) {
     return clips_instance;
 }
 
-long ClipsEnv::clips_load_facts(const godot::String &p_file_name) {
+int64_t ClipsEnv::clips_load_facts(const godot::String &p_file_name) {
     const char *file_name_cstr = p_file_name.utf8().get_data();
     return LoadFacts(env, file_name_cstr);
 }
 
-long ClipsEnv::clips_binary_load_facts(const godot::String &p_file_name) {
+int64_t ClipsEnv::clips_binary_load_facts(const godot::String &p_file_name) {
     const char *file_name_cstr = p_file_name.utf8().get_data();
     return BinaryLoadFacts(env, file_name_cstr);
 }
 
-long ClipsEnv::clips_load_facts_from_string(const godot::String &p_str) {
+int64_t ClipsEnv::clips_load_facts_from_string(const godot::String &p_str) {
     const char *cstr = p_str.utf8().get_data();
     const size_t len = p_str.length();
     return LoadFactsFromString(env, cstr, len);
 }
 
-long ClipsEnv::clips_save_facts(const godot::String &p_file_name, bool p_local_only) {
+int64_t ClipsEnv::clips_save_facts(const godot::String &p_file_name, bool p_local_only) {
     const char *file_name_cstr = p_file_name.utf8().get_data();
     const SaveScope save_scope = p_local_only ? LOCAL_SAVE : VISIBLE_SAVE;
     return SaveFacts(env, file_name_cstr, save_scope);
 }
 
-long ClipsEnv::clips_binary_save_facts(const godot::String &p_file_name, bool p_local_only) {
+int64_t ClipsEnv::clips_binary_save_facts(const godot::String &p_file_name, bool p_local_only) {
     const char *file_name_cstr = p_file_name.utf8().get_data();
     const SaveScope save_scope = p_local_only ? LOCAL_SAVE : VISIBLE_SAVE;
     return BinarySaveFacts(env, file_name_cstr, save_scope);
 }
 
-long ClipsEnv::clips_load_instances(const godot::String &p_file_name) {
+int64_t ClipsEnv::clips_load_instances(const godot::String &p_file_name) {
     const char *file_name_cstr = p_file_name.utf8().get_data();
     return LoadInstances(env, file_name_cstr);
 }
 
-long ClipsEnv::clips_binary_load_instances(const godot::String &p_file_name) {
+int64_t ClipsEnv::clips_binary_load_instances(const godot::String &p_file_name) {
     const char *file_name_cstr = p_file_name.utf8().get_data();
     return BinaryLoadInstances(env, file_name_cstr);
 }
 
-long ClipsEnv::clips_load_instances_from_string(const godot::String &p_str) {
+int64_t ClipsEnv::clips_load_instances_from_string(const godot::String &p_str) {
     const char *cstr = p_str.utf8().get_data();
     const size_t len = p_str.length();
     return LoadInstancesFromString(env, cstr, len);
 }
 
-long ClipsEnv::clips_restore_instances(const godot::String &p_file_name) {
+int64_t ClipsEnv::clips_restore_instances(const godot::String &p_file_name) {
     const char *file_name_cstr = p_file_name.utf8().get_data();
     return RestoreInstances(env, file_name_cstr);
 }
 
-long ClipsEnv::clips_restore_instances_from_string(const godot::String &p_str) {
+int64_t ClipsEnv::clips_restore_instances_from_string(const godot::String &p_str) {
     const char *cstr = p_str.utf8().get_data();
     const size_t len = p_str.length();
     return RestoreInstancesFromString(env, cstr, len);
 }
 
-long ClipsEnv::clips_save_instances(const godot::String &p_file_name, bool p_local_only) {
+int64_t ClipsEnv::clips_save_instances(const godot::String &p_file_name, bool p_local_only) {
     const char *file_name_cstr = p_file_name.utf8().get_data();
     const SaveScope save_scope = p_local_only ? LOCAL_SAVE : VISIBLE_SAVE;
     return SaveInstances(env, file_name_cstr, save_scope);
 }
 
-long ClipsEnv::clips_binary_save_instances(const godot::String &p_file_name, bool p_local_only) {
+int64_t ClipsEnv::clips_binary_save_instances(const godot::String &p_file_name, bool p_local_only) {
     const char *file_name_cstr = p_file_name.utf8().get_data();
     const SaveScope save_scope = p_local_only ? LOCAL_SAVE : VISIBLE_SAVE;
     return BinarySaveInstances(env, file_name_cstr, save_scope);
@@ -311,14 +311,14 @@ bool ClipsEnv::clips_build(const godot::String &p_str) {
     return result;
 }
 
-godot::Ref<godot::ClipsFunctionCallBuilder> ClipsEnv::clips_create_function_call_builder(const size_t p_capacity) {
+godot::Ref<godot::ClipsFunctionCallBuilder> ClipsEnv::clips_create_function_call_builder(const int64_t p_capacity) {
     godot::Ref<godot::ClipsFunctionCallBuilder> clips_function_call_builder = memnew(godot::ClipsFunctionCallBuilder);
     FunctionCallBuilder *fcb = CreateFunctionCallBuilder(env, p_capacity);
     clips_function_call_builder->set_fcb(fcb);
     return clips_function_call_builder;
 }
 
-godot::Ref<godot::ClipsStringBuilder> ClipsEnv::clips_create_string_builder(size_t p_capacity) {
+godot::Ref<godot::ClipsStringBuilder> ClipsEnv::clips_create_string_builder(int64_t p_capacity) {
     godot::Ref<godot::ClipsStringBuilder> clips_string_builder = memnew(godot::ClipsStringBuilder);
     StringBuilder *sb = CreateStringBuilder(env, p_capacity);
     clips_string_builder->set_sb(sb);
