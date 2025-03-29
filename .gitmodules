@@ -1,10 +1,10 @@
 [submodule "extern/godot-cpp"]
 	path = extern/godot-cpp
 	url = git@github.com:godotengine/godot-cpp.git
-[submodule "extern/clips"]
-	path = extern/clips
-	url = git@github.com:noxdafox/clips.git
 [submodule "extern/gut"]
 	path = extern/gut
 	url = git@github.com:bitwes/Gut.git
 	branch = 2bc6617
+[submodule "extern/clips"]
+	path = extern/clips
+	url = git@github.com:secondhand-gnome/gdclips.git
